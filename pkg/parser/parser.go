@@ -1,10 +1,8 @@
 package parser
 
 import (
-	// "bufio"
 	"bytes"
 	"errors"
-	"fmt"
 	"io"
 	"strings"
 	"text/scanner"
@@ -150,11 +148,6 @@ func (p textParser) ReadAll(reader io.Reader) (accounts [][9]int, err error) {
 				p.readNumber(digits[6].Bytes()),
 				p.readNumber(digits[7].Bytes()),
 				p.readNumber(digits[8].Bytes()),
-			}
-			for i, entry := range account {
-				if entry == -1 {
-					return nil, fmt.Errorf("unable to parse number (%d)", i)
-				}
 			}
 			accounts = append(accounts, account)
 			for _, buf := range digits {
